@@ -1,4 +1,4 @@
-# Motiva.ee
+# laravel-nginx-ssl-docker
 
 ## Production
 ```bash
