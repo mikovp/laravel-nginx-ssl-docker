@@ -1,4 +1,4 @@
-# laravel-nginx-ssl-docker
+# Laravel 8/Nginx ssl/certbot/docker-compose
 
 ## Production
 ```bash
@@ -17,7 +17,7 @@ php artisan optimize
 #Generate app key
 php artisan key:generate
 
-#Install dependencies
+#Install Node dependencies
 npm install && npm run prod
 
 #Migrate and seed database
