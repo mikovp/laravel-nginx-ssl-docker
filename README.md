@@ -1,4 +1,4 @@
-# Laravel 8/Php 7.4/MariaDB/Nginx ssl/Certbot/Docker-compose
+# Laravel 8/Php 7.4-fpm/MariaDB/Nginx ssl/Certbot/Docker-compose
 
 ## Production
 ```bash
