@@ -1,4 +1,6 @@
-# Laravel 8/Php 7.4/MariaDB/Nginx ssl/Certbot/Docker-compose
+# Laravel 8/Php 7.4-fpm/Node/MariaDB/Nginx ssl/Certbot in docker-compose.yml
+
+Copy all files in your Laravel App directory
 
 ## Production
 ```bash
