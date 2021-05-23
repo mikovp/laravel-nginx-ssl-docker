@@ -28,31 +28,26 @@ services:
     networks:
       - laravel
 
-  nginx:
-    image: nginx:alpine
-    container_name: laravel-nginx
-    restart: always
+  nginx-certbot:
+    restart: unless-stopped
+    image: staticfloat/nginx-certbot
     ports:
-      - 80:80
-      - 443:443
+      - 80:80/tcp
+      - 443:443/tcp
+    environment:
+      CERTBOT_EMAIL: mail@example.com
+      # variable names are space-separated
+      ENVSUBST_VARS: FQDN
+      FQDN: domen.example.com
     volumes:
       - ./:/var/www
-      - ./nginx:/etc/nginx/conf.d
-      - ./nginx/data/certbot/conf:/etc/letsencrypt
-      - ./nginx/data/certbot/www:/var/www/certbot
+      - ./nginx/conf.d:/etc/nginx/user.conf.d:ro
+      - letsencrypt:/etc/letsencrypt
     networks:
       - laravel
-    # command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
 
-  certbot:
-    container_name: laravel-certbot
-    image: certbot/certbot
-    volumes:
-      - ./nginx/data/certbot/conf:/etc/letsencrypt
-      - ./nginx/data/certbot/www:/var/www/certbot
-    networks:
-      - laravel
-    # entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+volumes:
+  letsencrypt:
 
 networks:
   laravel:
