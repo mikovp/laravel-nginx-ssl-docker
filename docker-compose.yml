@@ -19,7 +19,7 @@ services:
   db:
     image: mariadb
     container_name: laravel-db
-    restart: always
+    restart: on-failure
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
@@ -29,7 +29,7 @@ services:
       - laravel
 
   nginx-certbot:
-    restart: unless-stopped
+    restart: always
     image: staticfloat/nginx-certbot
     ports:
       - 80:80/tcp
