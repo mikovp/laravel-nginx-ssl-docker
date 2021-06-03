@@ -25,6 +25,8 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_USER: ${DB_USERNAME}
+    volumes:
+      - db:/var/lib/mysql
     networks:
       - laravel
 
@@ -48,6 +50,7 @@ services:
 
 volumes:
   letsencrypt:
+  db:
 
 networks:
   laravel:
